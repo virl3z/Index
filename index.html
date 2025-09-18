@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список гиперссылок и форма</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .image-map-container {
+            position: relative;
+            display: inline-block; /* Чтобы карта растягивалась по размеру изображения */
+        }
+        .image-map-container img {
+            display: block; /* Убираем лишний отступ под изображением */
+        }
+        /* Стили для областей карты (опционально, для наглядности) */
+        .area-highlight {
+            border: 2px dashed blue;
+            box-sizing: border-box; /* Чтобы граница не увеличивала размер */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Список гиперссылок</h1>
+
+    <ul>
+        <li>1) Абсолютная гиперссылка: <a href="http://kubsu.ru">Главная страница kubsu.ru</a></li>
+        <li>2) Абсолютная гиперссылка (HTTPS): <a href="https://kubsu.ru">Главная страница kubsu.ru (HTTPS)</a></li>
+        <li>3) Ссылка-изображение: <a href="https://kubsu.ru"><img src="" alt="Логотип КубГУ"></a></li>
+        <li>4) Сокращенная ссылка на внутреннюю страницу: <a href="/internal/page.html">Внутренняя страница</a></li>
+        <li>5) Сокращенная ссылка на главную страницу: <a href="/">Главная</a></li>
+        <li>6) Ссылка на фрагмент текущей страницы: <a href="#form-section">К форме</a></li>
+        <li>7) Ссылка с тремя параметрами в URL: <a href="?param1=value1&param2=value2&param3=value3">Ссылка с параметрами</a></li>
+        <li>8) Ссылка с параметром id в URL: <a href="?id=12345">Ссылка с ID</a></li>
+        <li>9) Относительная на страницу в текущем каталоге: <a href="current_page.html">Текущая страница</a></li>
+        <li>10) Относительная на страницу в каталоге 'about': <a href="about/about_us.html">О нас</a></li>
+        <li>11) Относительная на страницу в каталоге уровнем выше: <a href="../parent_page.html">Родительская страница</a></li>
+        <li>12) Относительная на страницу в каталоге двумя уровнями выше: <a href="../../grandparent_page.html">Прародительская страница</a></li>
+        <li>13) Контекстная в тексте абзаца: <a href="https://ru.wikipedia.org/wiki/HTML">HTML</a> - это язык разметки, используемый для создания веб-страниц.</li>
+        <li>14) Ссылка на фрагмент страницы стороннего сайта: <a href="https://www.w3.org/TR/html52/#introduction-html-languages">W3C HTML5.2 Specification (Фрагмент)</a></li>
+        <li>15) Ссылки из областей картинки (HTML-тег map):
+            <div class="image-map-container">
+                <img src="" alt="Интерактивное изображение" usemap="#imagemap">
+                <map name="imagemap">
+                    <area shape="rect" coords="0,0,150,150" href="https://example.com/rectangle" alt="Прямоугольная область" class="area-highlight">
+                    <area shape="circle" coords="225,75,50" href="https://example.com/circle" alt="Круглая область" class="area-highlight">
+                </map>
+            </div>
+        </li>
+        <li>16) Ссылка с пустым href: <a href="">Пустая ссылка</a></li>
+        <li>17) Ссылка без href: <a>Текст без ссылки</a></li>
+        <li>18) Ссылка, по которой запрещен переход поисковикам (используется `rel="nofollow"`): <a href="https://example.com/nofollow" rel="nofollow">Ссылка с nofollow</a></li>
+        <li>19) Страница, запрещенная для индексации поисковиками (осуществляется через meta-тег в `<head>`, здесь просто упоминание): Страница, которую необходимо запретить для индексации, должна иметь в `<head>` тег: `<meta name="robots" content="noindex">`.</li>
+        <li>20) Нумерованный список ссылок с подписями title:
+            <ol>
+                <li><a href="https://www.example.com/page1" title="Первая примерная страница">Пример 1</a></li>
+                <li><a href="https://www.example.com/page2" title="Вторая примерная страница">Пример 2</a></li>
+                <li><a href="https://www.example.com/page3" title="Третья примерная страница">Пример 3</a></li>
+            </ol>
+        </li>
+        <li>21) Ссылка на файл на сервере FTP с авторизацией: <a href="ftp://user:password@ftp.example.com/file.zip">FTP файл с авторизацией</a> (<strong>Примечание:</strong> В реальных условиях пароль не рекомендуется указывать прямо в ссылке из соображений безопасности.)</li>
+    </ul>
+
+    <hr>
+
+    <h1 id="form-section">Форма</h1>
+
+    <form action="/submit-form" method="post">
+        <div>
+            <label for="full_name">ФИО:</label><br>
+            <input type="text" id="full_name" name="full_name" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="phone">Телефон:</label><br>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="+7 (___) ___-__-__" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="email">e-mail:</label><br>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="birth_date">Дата рождения:</label><br>
+            <input type="date" id="birth_date" name="birth_date" required>
+        </div>
+        <br>
+
+        <div>
+            <p>Пол:</p>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Мужской</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Женский</label><br>
+            <input type="radio" id="other_gender" name="gender" value="other">
+            <label for="other_gender">Другой</label>
+        </div>
+        <br>
+
+        <div>
+            <label for="programming_languages">Любимый язык программирования (выберите несколько):</label><br>
+            <select id="programming_languages" name="programming_languages[]" multiple>
+                <option value="pascal">Pascal</option>
+                <option value="c">C</option>
+                <option value="c++">C++</option>
+                <option value="javascript">JavaScript</option>
+                <option value="php">PHP</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="haskell">Haskell</option>
+                <option value="clojure">Clojure</option>
+                <option value="prolog">Prolog</option>
+                <option value="scala">Scala</option>
+            </select>
+        </div>
+        <br>
+
+        <div>
+            <label for="bio">Биография:</label><br>
+            <textarea id="bio" name="bio" rows="5" cols="50"></textarea>
+        </div>
+        <br>
+
+        <div>
+            <input type="checkbox" id="contract_accepted" name="contract_accepted" value="yes" required>
+            <label for="contract_accepted">С контрактом ознакомлен(а)</label>
+        </div>
+        <br>
+
+        <div>
+            <button type="submit">Сохранить</button>
+        </div>
+    </form>
+
+</body>
+</html>
