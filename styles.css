@@ -1,72 +1,91 @@
+/* Mobile First стили */
+
 /* Базовые стили */
-body {
-    font-family: sans-serif;
-    line-height: 1.6;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
 .container {
-    max-width: 960px;
-    margin: 0 auto;
+    width: 100%;
     padding: 0 15px;
 }
 
-/* Стили для шапки */
+/* Стили для шапки (Mobile First) */
 #site-header {
     background-color: #f8f9fa;
-    width: 100%;
+    padding: 15px 0;
     border-bottom: 1px solid #e9ecef;
 }
 
 .header-grid {
-    display: grid;
-    grid-template-columns: 100px 1fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 10px;
-    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .logo {
-    grid-row: 1 / 3;
-    grid-column: 1;
-    background-color: #e9ecef;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
     font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.site-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
 }
 
 .top-menu {
-    grid-row: 1;
-    grid-column: 2 / 5;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column;
 }
 
 .top-menu a {
+    padding: 8px 0;
     text-decoration: none;
     color: #007bff;
-    padding: 5px 10px;
+    border-bottom: 1px solid #e9ecef;
 }
 
 .top-menu a:hover {
     text-decoration: underline;
 }
 
-.site-title {
-    grid-row: 2;
-    grid-column: 2;
-    font-size: 1.5em;
-    font-weight: bold;
-    padding: 10px 0;
+.top-menu a:last-child {
+    border-bottom: none;
 }
 
-/* Стили для основного контента */
+/* Стили для основного контента (Mobile First) */
 main {
-    margin: 20px auto;
+    padding: 20px 0;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.hyperlinks-block {
+    order: 2;
+}
+
+.table-block {
+    order: 1;
+}
+
+.form-block {
+    order: 3;
+}
+
+h1 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
 }
 
 .hyperlinks-list {
@@ -74,10 +93,11 @@ main {
 }
 
 .hyperlinks-list li {
-    margin-bottom: 8px;
+    margin-bottom: 15px;
 }
 
 .image-map-container {
+    margin-top: 10px;
     position: relative;
     display: inline-block;
 }
@@ -135,7 +155,6 @@ main {
 #main-form textarea,
 #main-form select {
     width: 100%;
-    max-width: 300px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -166,8 +185,103 @@ main {
     width: 100%;
     padding: 20px 0;
     margin-top: 30px;
+    text-align: center;
 }
 
 #site-footer p {
     margin: 5px 0;
+}
+
+/* Media Query для планшетов (768px и выше) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    .header-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .logo {
+        margin-bottom: 0;
+        margin-right: 15px;
+    }
+
+    .site-title {
+        margin-bottom: 0;
+        margin-right: auto;
+    }
+
+    .top-menu {
+        flex-direction: row;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .top-menu a {
+        padding: 0 15px;
+        border-bottom: none;
+        border-right: 1px solid #e9ecef;
+    }
+
+    .top-menu a:last-child {
+        border-right: none;
+    }
+
+    .content-wrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .hyperlinks-block {
+        order: 1;
+        flex: 0 0 70%;
+        padding-right: 20px;
+    }
+
+    .table-block {
+        order: 2;
+        flex: 0 0 30%;
+    }
+
+    .form-block {
+        order: 3;
+        flex: 0 0 100%;
+    }
+}
+
+/* Media Query для десктопов (1024px и выше) */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    .header-grid {
+        flex-wrap: nowrap;
+    }
+
+    .top-menu {
+        width: auto;
+        margin-top: 0;
+    }
+
+    .content-wrapper {
+        flex-wrap: nowrap;
+    }
+
+    .hyperlinks-block {
+        flex: 0 0 60%;
+        padding-right: 30px;
+    }
+
+    .table-block {
+        flex: 0 0 40%;
+    }
+
+    .form-block {
+        flex: 0 0 100%;
+    }
 }
