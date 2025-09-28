@@ -4,178 +4,437 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Список гиперссылок и форма</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Mobile First стили */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        #site-header {
+            background-color: #f8f9fa;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .header-grid {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .site-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .top-menu {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-menu a {
+            padding: 8px 0;
+            text-decoration: none;
+            color: #007bff;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .top-menu a:last-child {
+            border-bottom: none;
+        }
+
+        /* Main content */
+        main {
+            padding: 20px 0;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hyperlinks-block {
+            order: 2;
+        }
+
+        .table-block {
+            order: 1;
+        }
+
+        .form-block {
+            order: 3;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Hyperlinks list */
+        .hyperlinks-list {
+            margin-bottom: 20px;
+        }
+
+        .hyperlinks-list li {
+            margin-bottom: 15px;
+        }
+
+        .image-map-container {
+            margin-top: 10px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Form */
+        form div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f8f9fa;
+            padding: 15px 0;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+            margin-top: 20px;
+        }
+
+        /* Media Query для планшетов */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+
+            .header-grid {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+            .logo {
+                margin-bottom: 0;
+                margin-right: 15px;
+            }
+
+            .site-title {
+                margin-bottom: 0;
+                margin-right: auto;
+            }
+
+            .top-menu {
+                flex-direction: row;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .top-menu a {
+                padding: 0 15px;
+                border-bottom: none;
+                border-right: 1px solid #e9ecef;
+            }
+
+            .top-menu a:last-child {
+                border-right: none;
+            }
+
+            .content-wrapper {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .hyperlinks-block {
+                order: 1;
+                flex: 0 0 70%;
+                padding-right: 20px;
+            }
+
+            .table-block {
+                order: 2;
+                flex: 0 0 30%;
+            }
+
+            .form-block {
+                order: 3;
+                flex: 0 0 100%;
+            }
+        }
+
+        /* Media Query для десктопов */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1200px;
+            }
+
+            .header-grid {
+                flex-wrap: nowrap;
+            }
+
+            .top-menu {
+                width: auto;
+                margin-top: 0;
+            }
+
+            .content-wrapper {
+                flex-wrap: nowrap;
+            }
+
+            .hyperlinks-block {
+                flex: 0 0 60%;
+                padding-right: 30px;
+            }
+
+            .table-block {
+                flex: 0 0 40%;
+            }
+
+            .form-block {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <header id="site-header">
         <div class="container">
             <div class="header-grid">
                 <div class="logo">Лого</div>
+                <div class="site-title">Название сайта</div>
                 <nav class="top-menu">
                     <a href="#">Ссылка меню 1</a>
                     <a href="#">Ссылка 2</a>
                     <a href="#">Ссылка 3</a>
                 </nav>
-                <div class="site-title">Название сайта</div>
             </div>
         </div>
     </header>
 
     <main class="container">
-        <h1>Список гиперссылок</h1>
+        <div class="content-wrapper">
+            <div class="hyperlinks-block">
+                <h1>Список гиперссылок</h1>
 
-        <ul class="hyperlinks-list">
-            <li>1) Абсолютная гиперссылка: <a href="http://kubsu.ru">Главная страница kubsu.ru</a></li>
-            <li>2) Абсолютная гиперссылка (HTTPS): <a href="https://kubsu.ru">Главная страница kubsu.ru (HTTPS)</a></li>
-            <li>3) Ссылка-изображение: <a href="https://kubsu.ru"><img src="" alt="Логотип КубГУ"></a></li>
-            <li>4) Сокращенная ссылка на внутреннюю страницу: <a href="/internal/page.html">Внутренняя страница</a></li>
-            <li>5) Сокращенная ссылка на главную страницу: <a href="/">Главная</a></li>
-            <li>6) Ссылка на фрагмент текущей страницы: <a href="#form-section">К форме</a></li>
-            <li>7) Ссылка с тремя параметрами в URL: <a href="?param1=value1&param2=value2&param3=value3">Ссылка с параметрами</a></li>
-            <li>8) Ссылка с параметром id в URL: <a href="?id=12345">Ссылка с ID</a></li>
-            <li>9) Относительная на страницу в текущем каталоге: <a href="current_page.html">Текущая страница</a></li>
-            <li>10) Относительная на страницу в каталоге 'about': <a href="about/about_us.html">О нас</a></li>
-            <li>11) Относительная на страницу в каталоге уровнем выше: <a href="../parent_page.html">Родительская страница</a></li>
-            <li>12) Относительная на страницу в каталоге двумя уровнями выше: <a href="../../grandparent_page.html">Прародительская страница</a></li>
-            <li>13) Контекстная в тексте абзаца: <a href="https://ru.wikipedia.org/wiki/HTML">HTML</a> - это язык разметки, используемый для создания веб-страниц.</li>
-            <li>14) Ссылка на фрагмент страницы стороннего сайта: <a href="https://www.w3.org/TR/html52/#introduction-html-languages">W3C HTML5.2 Specification (Фрагмент)</a></li>
-            <li>15) Ссылки из областей картинки (HTML-тег map):
-                <div class="image-map-container">
-                    <img src="" alt="Интерактивное изображение" usemap="#imagemap">
-                    <map name="imagemap">
-                        <area shape="rect" coords="0,0,150,150" href="https://example.com/rectangle" alt="Прямоугольная область" class="area-highlight">
-                        <area shape="circle" coords="225,75,50" href="https://example.com/circle" alt="Круглая область" class="area-highlight">
-                    </map>
-                </div>
-            </li>
-            <li>16) Ссылка с пустым href: <a href="">Пустая ссылка</a></li>
-            <li>17) Ссылка без href: <a>Текст без ссылки</a></li>
-            <li>18) Ссылка, по которой запрещен переход поисковикам (используется `rel="nofollow"`): <a href="https://example.com/nofollow" rel="nofollow">Ссылка с nofollow</a></li>
-            <li>19) Страница, запрещенная для индексации поисковиками (осуществляется через meta-тег в `<head>`, здесь просто упоминание): Страница, которую необходимо запретить для индексации, должна иметь в `<head>` тег: `<meta name="robots" content="noindex">`.</li>
-            <li>20) Нумерованный список ссылок с подписями title:
-                <ol>
-                    <li><a href="https://www.example.com/page1" title="Первая примерная страница">Пример 1</a></li>
-                    <li><a href="https://www.example.com/page2" title="Вторая примерная страница">Пример 2</a></li>
-                    <li><a href="https://www.example.com/page3" title="Третья примерная страница">Пример 3</a></li>
-                </ol>
-            </li>
-            <li>21) Ссылка на файл на сервере FTP с авторизацией: <a href="ftp://user:password@ftp.example.com/file.zip">FTP файл с авторизацией</a> (<strong>Примечание:</strong> В реальных условиях пароль не рекомендуется указывать прямо в ссылке из соображений безопасности.)</li>
-        </ul>
-
-        <hr>
-
-        <h1>Таблица</h1>
-        <table id="data-table">
-            <thead>
-                <tr>
-                    <th>Колонка 1</th>
-                    <th>Колонка 2</th>
-                    <th>Колонка 3</th>
-                    <th>Колонка 4</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Ячейка 1.1</td>
-                    <td>Ячейка 1.2</td>
-                    <td>Ячейка 1.3</td>
-                    <td>Ячейка 1.4</td>
-                </tr>
-                <tr>
-                    <td>Ячейка 2.1</td>
-                    <td colspan="2">Объединенная ячейка 2.2-2.3</td>
-                    <td>Ячейка 2.4</td>
-                </tr>
-                <tr>
-                    <td>Ячейка 3.1</td>
-                    <td>Ячейка 3.2</td>
-                    <td>Ячейка 3.3</td>
-                    <td rowspan="2">Объединенная ячейка 3.4-4.4</td>
-                </tr>
-                <tr>
-                    <td>Ячейка 4.1</td>
-                    <td>Ячейка 4.2</td>
-                    <td>Ячейка 4.3</td>
-                </tr>
-                <tr>
-                    <td>Ячейка 5.1</td>
-                    <td>Ячейка 5.2</td>
-                    <td colspan="2">Объединенная ячейка 5.3-5.4</td>
-                </tr>
-                <tr>
-                    <td>Ячейка 6.1</td>
-                    <td>Ячейка 6.2</td>
-                    <td>Ячейка 6.3</td>
-                    <td>Ячейка 6.4</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <hr>
-
-        <h1 id="form-section">Форма</h1>
-
-        <form id="main-form" action="/submit-form" method="post">
-            <div>
-                <label for="full_name">ФИО:</label><br>
-                <input type="text" id="full_name" name="full_name" required>
+                <ul class="hyperlinks-list">
+                    <li>1) Абсолютная гиперссылка: <a href="http://kubsu.ru">Главная страница kubsu.ru</a></li>
+                    <li>2) Абсолютная гиперссылка (HTTPS): <a href="https://kubsu.ru">Главная страница kubsu.ru (HTTPS)</a></li>
+                    <li>3) Ссылка-изображение: <a href="https://kubsu.ru"><img src="" alt="Логотип КубГУ"></a></li>
+                    <li>4) Сокращенная ссылка на внутреннюю страницу: <a href="/internal/page.html">Внутренняя страница</a></li>
+                    <li>5) Сокращенная ссылка на главную страницу: <a href="/">Главная</a></li>
+                    <li>6) Ссылка на фрагмент текущей страницы: <a href="#form-section">К форме</a></li>
+                    <li>7) Ссылка с тремя параметрами в URL: <a href="?param1=value1&param2=value2&param3=value3">Ссылка с параметрами</a></li>
+                    <li>8) Ссылка с параметром id в URL: <a href="?id=12345">Ссылка с ID</a></li>
+                    <li>9) Относительная на страницу в текущем каталоге: <a href="current_page.html">Текущая страница</a></li>
+                    <li>10) Относительная на страницу в каталоге 'about': <a href="about/about_us.html">О нас</a></li>
+                    <li>11) Относительная на страницу в каталоге уровнем выше: <a href="../parent_page.html">Родительская страница</a></li>
+                    <li>12) Относительная на страницу в каталоге двумя уровнями выше: <a href="../../grandparent_page.html">Прародительская страница</a></li>
+                    <li>13) Контекстная в тексте абзаца: <a href="https://ru.wikipedia.org/wiki/HTML">HTML</a> - это язык разметки, используемый для создания веб-страниц.</li>
+                    <li>14) Ссылка на фрагмент страницы стороннего сайта: <a href="https://www.w3.org/TR/html52/#introduction-html-languages">W3C HTML5.2 Specification (Фрагмент)</a></li>
+                    <li>15) Ссылки из областей картинки (HTML-тег map):
+                        <div class="image-map-container">
+                            <img src="" alt="Интерактивное изображение" usemap="#imagemap">
+                            <map name="imagemap">
+                                <area shape="rect" coords="0,0,150,150" href="https://example.com/rectangle" alt="Прямоугольная область" class="area-highlight">
+                                <area shape="circle" coords="225,75,50" href="https://example.com/circle" alt="Круглая область" class="area-highlight">
+                            </map>
+                        </div>
+                    </li>
+                    <li>16) Ссылка с пустым href: <a href="">Пустая ссылка</a></li>
+                    <li>17) Ссылка без href: <a>Текст без ссылки</a></li>
+                    <li>18) Ссылка, по которой запрещен переход поисковикам (используется `rel="nofollow"`): <a href="https://example.com/nofollow" rel="nofollow">Ссылка с nofollow</a></li>
+                    <li>19) Страница, запрещенная для индексации поисковиками (осуществляется через meta-тег в `<head>`, здесь просто упоминание): Страница, которую необходимо запретить для индексации, должна иметь в `<head>` тег: `<meta name="robots" content="noindex">`.</li>
+                    <li>20) Нумерованный список ссылок с подписями title:
+                        <ol>
+                            <li><a href="https://www.example.com/page1" title="Первая примерная страница">Пример 1</a></li>
+                            <li><a href="https://www.example.com/page2" title="Вторая примерная страница">Пример 2</a></li>
+                            <li><a href="https://www.example.com/page3" title="Третья примерная страница">Пример 3</a></li>
+                        </ol>
+                    </li>
+                    <li>21) Ссылка на файл на сервере FTP с авторизацией: <a href="ftp://user:password@ftp.example.com/file.zip">FTP файл с авторизацией</a> (<strong>Примечание:</strong> В реальных условиях пароль не рекомендуется указывать прямо в ссылке из соображений безопасности.)</li>
+                </ul>
             </div>
-            <br>
 
-            <div>
-                <label for="phone">Телефон:</label><br>
-                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="+7 (___) ___-__-__" required>
+            <div class="table-block">
+                <h1>Таблица</h1>
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>Колонка 1</th>
+                            <th>Колонка 2</th>
+                            <th>Колонка 3</th>
+                            <th>Колонка 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ячейка 1.1</td>
+                            <td>Ячейка 1.2</td>
+                            <td>Ячейка 1.3</td>
+                            <td>Ячейка 1.4</td>
+                        </tr>
+                        <tr>
+                            <td>Ячейка 2.1</td>
+                            <td colspan="2">Объединенная ячейка 2.2-2.3</td>
+                            <td>Ячейка 2.4</td>
+                        </tr>
+                        <tr>
+                            <td>Ячейка 3.1</td>
+                            <td>Ячейка 3.2</td>
+                            <td>Ячейка 3.3</td>
+                            <td rowspan="2">Объединенная ячейка 3.4-4.4</td>
+                        </tr>
+                        <tr>
+                            <td>Ячейка 4.1</td>
+                            <td>Ячейка 4.2</td>
+                            <td>Ячейка 4.3</td>
+                        </tr>
+                        <tr>
+                            <td>Ячейка 5.1</td>
+                            <td>Ячейка 5.2</td>
+                            <td colspan="2">Объединенная ячейка 5.3-5.4</td>
+                        </tr>
+                        <tr>
+                            <td>Ячейка 6.1</td>
+                            <td>Ячейка 6.2</td>
+                            <td>Ячейка 6.3</td>
+                            <td>Ячейка 6.4</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <br>
 
-            <div>
-                <label for="email">e-mail:</label><br>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <br>
+            <div class="form-block">
+                <h1 id="form-section">Форма</h1>
 
-            <div>
-                <label for="birth_date">Дата рождения:</label><br>
-                <input type="date" id="birth_date" name="birth_date" required>
-            </div>
-            <br>
+                <form id="main-form" action="/submit-form" method="post">
+                    <div>
+                        <label for="full_name">ФИО:</label>
+                        <input type="text" id="full_name" name="full_name" required>
+                    </div>
 
-            <div>
-                <p>Пол:</p>
-                <input type="radio" id="male" name="gender" value="male">
-                <label for="male">Мужской</label><br>
-                <input type="radio" id="female" name="gender" value="female">
-                <label for="female">Женский</label><br>
-                <input type="radio" id="other_gender" name="gender" value="other">
-                <label for="other_gender">Другой</label>
-            </div>
-            <br>
+                    <div>
+                        <label for="phone">Телефон:</label>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="+7 (___) ___-__-__" required>
+                    </div>
 
-            <div>
-                <label for="programming_languages">Любимый язык программирования (выберите несколько):</label><br>
-                <select id="programming_languages" name="programming_languages[]" multiple>
-                    <option value="pascal">Pascal</option>
-                    <option value="c">C</option>
-                    <option value="c++">C++</option>
-                    <option value="javascript">JavaScript</option>
-                    <option value="php">PHP</option>
-                    <option value="python">Python</option>
-                    <option value="java">Java</option>
-                    <option value="haskell">Haskell</option>
-                    <option value="clojure">Clojure</option>
-                    <option value="prolog">Prolog</option>
-                    <option value="scala">Scala</option>
-                </select>
-            </div>
-            <br>
+                    <div>
+                        <label for="email">e-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
 
-            <div>
-                <label for="bio">Биография:</label><br>
-                <textarea id="bio" name="bio" rows="5" cols="50"></textarea>
-            </div>
-            <br>
+                    <div>
+                        <label for="birth_date">Дата рождения:</label>
+                        <input type="date" id="birth_date" name="birth_date" required>
+                    </div>
 
-            <div>
-                <input type="checkbox" id="contract_accepted" name="contract_accepted" value="yes" required>
-                <label for="contract_accepted">С контрактом ознакомлен(а)</label>
+                    <div>
+                        <p>Пол:</p>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Мужской</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Женский</label>
+                        <input type="radio" id="other_gender" name="gender" value="other">
+                        <label for="other_gender">Другой</label>
+                    </div>
+
+                    <div>
+                        <label for="programming_languages">Любимый язык программирования (выберите несколько):</label>
+                        <select id="programming_languages" name="programming_languages[]" multiple>
+                            <option value="pascal">Pascal</option>
+                            <option value="c">C</option>
+                            <option value="c++">C++</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="php">PHP</option>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="haskell">Haskell</option>
+                            <option value="clojure">Clojure</option>
+                            <option value="prolog">Prolog</option>
+                            <option value="scala">Scala</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="bio">Биография:</label>
+                        <textarea id="bio" name="bio" rows="5"></textarea>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="contract_accepted" name="contract_accepted" value="yes" required>
+                        <label for="contract_accepted">С контрактом ознакомлен(а)</label>
+                    </div>
+
+                    <div>
+                        <button type="submit">Отправить</button>
+                    </div>
+                </form>
             </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>(с) Сергей Синица</p>
+        </div>
+    </footer>
+</body>
+</html>
