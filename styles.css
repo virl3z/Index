@@ -1,287 +1,162 @@
-/* Mobile First стили */
+/* style.css - Дополнительные стили для проекта */
 
-/* Базовые стили */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* Кастомные цвета для проекта */
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --success-color: #198754;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #0dcaf0;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
 }
 
-body {
-    font-family: sans-serif;
-    line-height: 1.6;
-    color: #333;
-}
-
-.container {
-    width: 100%;
-    padding: 0 15px;
-}
-
-/* Стили для шапки (Mobile First) */
-#site-header {
-    background-color: #f8f9fa;
-    padding: 15px 0;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.header-grid {
-    display: flex;
-    flex-direction: column;
-}
-
-.logo {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.site-title {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-}
-
-.top-menu {
-    display: flex;
-    flex-direction: column;
-}
-
-.top-menu a {
-    padding: 8px 0;
-    text-decoration: none;
-    color: #007bff;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.top-menu a:hover {
-    text-decoration: underline;
-}
-
-.top-menu a:last-child {
-    border-bottom: none;
-}
-
-/* Стили для основного контента (Mobile First) */
-main {
-    padding: 20px 0;
-}
-
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-}
-
-.hyperlinks-block {
-    order: 2;
-}
-
-.table-block {
-    order: 1;
-}
-
-.form-block {
-    order: 3;
-}
-
-h1 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-}
-
-.hyperlinks-list {
-    margin-bottom: 20px;
-}
-
-.hyperlinks-list li {
-    margin-bottom: 15px;
-}
-
+/* Дополнительные стили для элементов, не покрываемых Bootstrap */
 .image-map-container {
-    margin-top: 10px;
-    position: relative;
-    display: inline-block;
+  margin-top: 10px;
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  padding: 10px;
+  background-color: var(--light-color);
 }
 
-.image-map-container img {
-    display: block;
-}
-
+/* Стили для карты изображения */
 .area-highlight {
-    border: 2px dashed blue;
-    box-sizing: border-box;
+  outline: 2px solid red;
 }
 
-/* Стили для таблицы */
-#data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+/* Кастомизация навигационной панели */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
-#data-table th,
-#data-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+/* Стили для списка гиперссылок */
+.hyperlinks-list li {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e9ecef;
 }
 
-#data-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
+.hyperlinks-list li:last-child {
+  border-bottom: none;
 }
 
-#data-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+/* Кастомизация таблицы */
+.table-custom th {
+  background-color: var(--primary-color);
+  color: white;
 }
 
-#data-table tr:nth-child(odd) {
-    background-color: #ffffff;
+.table-custom tbody tr:hover {
+  background-color: rgba(13, 110, 253, 0.05);
 }
 
 /* Стили для формы */
-#main-form div {
-    margin-bottom: 15px;
+.form-section {
+  background-color: var(--light-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
-#main-form label {
-    display: block;
-    margin-bottom: 5px;
+/* Кастомизация кнопки отправки формы */
+.btn-submit-custom {
+  background: linear-gradient(135deg, var(--primary-color), #0a58ca);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-#main-form input[type="text"],
-#main-form input[type="tel"],
-#main-form input[type="email"],
-#main-form input[type="date"],
-#main-form textarea,
-#main-form select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.btn-submit-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
 }
 
-#main-form input[type="radio"],
-#main-form input[type="checkbox"] {
-    margin-right: 5px;
+/* Стили для footer */
+.footer-custom {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 1.5rem 0;
+  margin-top: 2rem;
 }
 
-#main-form button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+/* Анимации */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
 }
 
-#main-form button:hover {
-    background-color: #0056b3;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Стили для подвала */
-#site-footer {
-    background-color: #343a40;
-    color: white;
-    width: 100%;
-    padding: 20px 0;
-    margin-top: 30px;
-    text-align: center;
+/* Дополнительные адаптивные стили */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+  
+  .form-section {
+    padding: 1rem;
+  }
+  
+  .table-responsive {
+    font-size: 0.9rem;
+  }
 }
 
-#site-footer p {
-    margin: 5px 0;
+/* Стили для нумерованного списка в гиперссылках */
+.hyperlinks-list ol {
+  padding-left: 1.5rem;
 }
 
-/* Media Query для планшетов (768px и выше) */
-@media (min-width: 768px) {
-    .container {
-        max-width: 720px;
-        margin: 0 auto;
-    }
-
-    .header-grid {
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-    }
-
-    .logo {
-        margin-bottom: 0;
-        margin-right: 15px;
-    }
-
-    .site-title {
-        margin-bottom: 0;
-        margin-right: auto;
-    }
-
-    .top-menu {
-        flex-direction: row;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .top-menu a {
-        padding: 0 15px;
-        border-bottom: none;
-        border-right: 1px solid #e9ecef;
-    }
-
-    .top-menu a:last-child {
-        border-right: none;
-    }
-
-    .content-wrapper {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .hyperlinks-block {
-        order: 1;
-        flex: 0 0 70%;
-        padding-right: 20px;
-    }
-
-    .table-block {
-        order: 2;
-        flex: 0 0 30%;
-    }
-
-    .form-block {
-        order: 3;
-        flex: 0 0 100%;
-    }
+.hyperlinks-list ol li {
+  margin-bottom: 0.5rem;
 }
 
-/* Media Query для десктопов (1024px и выше) */
-@media (min-width: 1024px) {
-    .container {
-        max-width: 1200px;
-    }
+/* Кастомизация выпадающего списка */
+.form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
 
-    .header-grid {
-        flex-wrap: nowrap;
-    }
+/* Стили для радиокнопок и чекбоксов */
+.form-check-input:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
 
-    .top-menu {
-        width: auto;
-        margin-top: 0;
-    }
+/* Улучшение читаемости для длинных списков */
+.hyperlinks-list {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
 
-    .content-wrapper {
-        flex-wrap: nowrap;
-    }
+/* Кастомный скроллбар */
+.hyperlinks-list::-webkit-scrollbar {
+  width: 6px;
+}
 
-    .hyperlinks-block {
-        flex: 0 0 60%;
-        padding-right: 30px;
-    }
+.hyperlinks-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
 
-    .table-block {
-        flex: 0 0 40%;
-    }
+.hyperlinks-list::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 10px;
+}
 
-    .form-block {
-        flex: 0 0 100%;
-    }
+.hyperlinks-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
