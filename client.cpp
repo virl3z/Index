@@ -11,18 +11,18 @@ int main() {
 
     while (true) {
         string name;
-        int coffeeParams[3];
+        int coffeeParams[4];
 
         cout << "Введите имя клиента: ";
         cin >> name;
-        cout << "Введите параметры кофе [сахар(0-5) молоко(0-3) объем(1-3)]: ";
-        for (int i = 0; i < 3; i++)
+        cout << "Введите параметры кофе [крепость(1-5) сахар(0-5) молоко(0-3) объем(1-3)]: ";
+        for (int i = 0; i < 4; i++)
             cin >> coffeeParams[i];
 
         // Создаём файл клиента
         string path = "C:/Users/s0177102/source/repos/file/" + name + ".txt";
         ofstream fout(path);
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
             fout << coffeeParams[i] << " ";
         fout.close();
 
