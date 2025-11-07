@@ -1,4 +1,4 @@
-#include <iostream>
+include <iostream>
 #include <fstream>
 #include <windows.h>
 #include <string>
@@ -47,10 +47,3 @@ int main() {
                 }
             }
             fin.close();
-        }
-
-        cout << "----------------------------------\n";
-    }
-
-    return 0;
-}
