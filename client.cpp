@@ -1,4 +1,4 @@
-include <iostream>
+#include <iostream>
 #include <fstream>
 #include <windows.h>
 #include <string>
@@ -11,18 +11,18 @@ int main() {
 
     while (true) {
         string name;
-        int coffeeParams[4];
+        int coffeeParams[3];
 
         cout << "Введите имя клиента: ";
         cin >> name;
-        cout << "Введите параметры кофе [крепость(1-5) сахар(0-5) молоко(0-3) объем(1-3)]: ";
-        for (int i = 0; i < 4; i++)
+        cout << "Введите параметры кофе [сахар(0-5) молоко(0-3) объем(1-3)]: ";
+        for (int i = 0; i < 3; i++)
             cin >> coffeeParams[i];
 
         // Создаём файл клиента
         string path = "C:/Users/s0177102/source/repos/file/" + name + ".txt";
         ofstream fout(path);
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
             fout << coffeeParams[i] << " ";
         fout.close();
 
@@ -47,3 +47,10 @@ int main() {
                 }
             }
             fin.close();
+        }
+
+        cout << "----------------------------------\n";
+    }
+
+    return 0;
+}
